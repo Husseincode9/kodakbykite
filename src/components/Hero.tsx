@@ -49,16 +49,32 @@ export default function Hero() {
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 10 }}>
         <h1 style={{ 
-          fontSize: '4rem', 
-          fontWeight: 'bold', 
+          fontSize: '5rem', 
+          fontWeight: '900', 
+          color: '#DC143C', 
+          textShadow: '3px 3px 6px rgba(0,0,0,0.8)',
+          marginBottom: '1rem',
+          fontFamily: '"Arial Black", "Helvetica Black", "Impact", sans-serif',
+          letterSpacing: '0.02em',
+          textTransform: 'uppercase',
+          lineHeight: '0.9',
+          WebkitTextStroke: '1px rgba(0,0,0,0.3)',
+          filter: 'drop-shadow(0 0 10px rgba(220, 20, 60, 0.3))'
+        }}>
+          KODAK
+        </h1>
+        <h2 style={{ 
+          fontSize: '2rem', 
+          fontWeight: '600', 
           color: '#FFFFFF', 
           textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
           marginBottom: '1rem',
-          fontFamily: '"Kodak", "Kodak Condensed", "Kodak Extended", "Arial Black", "Helvetica Black", sans-serif',
-          letterSpacing: '0.05em'
+          fontFamily: '"Arial Black", "Helvetica Black", sans-serif',
+          letterSpacing: '0.1em',
+          textTransform: 'uppercase'
         }}>
-          KODAK BY KITE
-        </h1>
+          BY KITE
+        </h2>
         <p style={{ 
           fontSize: '1.5rem', 
           color: '#FFFFFF',

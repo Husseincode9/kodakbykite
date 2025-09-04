@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navigation from "../components/Navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.className} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Navigation />
+        
+        {/* Add top padding to account for fixed navigation */}
+        <div style={{ paddingTop: '80px' }}>
+          {children}
+        </div>
       </body>
     </html>
   );

@@ -68,25 +68,29 @@ export default function Places() {
       </div>
 
       {/* Gallery Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', maxWidth: '1200px', margin: '0 auto' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', maxWidth: '1400px', margin: '0 auto' }}>
         {countries[activeCountry as keyof typeof countries].images.map((image, idx) => (
           <a key={idx} href={`/places/${image.slug}`} style={{ textDecoration: 'none' }}>
             <div style={{ 
               backgroundColor: '#0a0a0a', 
-              borderRadius: '1rem', 
-              padding: '1rem', 
-              border: '1px solid #1f1f1f',
-              boxShadow: '0 4px 10px rgba(0, 0, 0, 0.35)',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-              cursor: 'pointer'
+              borderRadius: '1.25rem', 
+              padding: '1.5rem', 
+              border: '2px solid #1f1f1f',
+              boxShadow: '0 6px 15px rgba(0, 0, 0, 0.4)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
+              cursor: 'pointer',
+              position: 'relative',
+              overflow: 'hidden'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-4px)';
-              e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 215, 0, 0.15)';
+              e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)';
+              e.currentTarget.style.boxShadow = '0 12px 30px rgba(255, 215, 0, 0.2)';
+              e.currentTarget.style.borderColor = '#FFD700';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.35)';
+              e.currentTarget.style.transform = 'translateY(0) scale(1)';
+              e.currentTarget.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.4)';
+              e.currentTarget.style.borderColor = '#1f1f1f';
             }}
             >
               <img
@@ -94,34 +98,42 @@ export default function Places() {
                 alt={image.alt}
                 style={{ 
                   width: '100%', 
-                  height: '200px', 
+                  height: '280px', 
                   objectFit: 'cover',
-                  borderRadius: '0.5rem',
-                  marginBottom: '0.75rem',
-                  border: '2px solid #111111'
+                  borderRadius: '0.75rem',
+                  marginBottom: '1rem',
+                  border: '3px solid #111111',
+                  transition: 'transform 0.3s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.05)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1)';
                 }}
               />
               <h3 style={{ 
-                fontSize: '1.125rem', 
+                fontSize: '1.25rem', 
                 fontWeight: 700, 
                 textAlign: 'center',
                 color: '#FFFFFF',
-                letterSpacing: '0.01em',
-                marginBottom: '0.5rem'
+                letterSpacing: '0.02em',
+                marginBottom: '0.75rem'
               }}>
                 {image.title}
               </h3>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <span style={{
                   display: 'inline-block',
-                  padding: '0.4rem 0.9rem',
+                  padding: '0.6rem 1.2rem',
                   borderRadius: '999px',
                   border: '2px solid #FFD700',
                   color: '#FFD700',
-                  fontSize: '0.9rem',
+                  fontSize: '1rem',
                   fontWeight: 600,
-                  letterSpacing: '0.02em'
-                }}>View all</span>
+                  letterSpacing: '0.03em',
+                  transition: 'all 0.3s ease'
+                }}>View Gallery</span>
               </div>
             </div>
           </a>
