@@ -2,9 +2,9 @@
 
 export default function Contact() {
     return (
-      <section style={{ padding: '4rem 1.5rem', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold', marginBottom: '1.5rem' }}>Get in Touch</h2>
-        <p style={{ marginBottom: '1rem', fontSize: '1.125rem' }}>Let's connect! Reach me via email or socials below.</p>
+      <section style={{ padding: '4rem 1.5rem', textAlign: 'center', backgroundColor: '#000000', color: '#FFFFFF' }}>
+        <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold', marginBottom: '1rem', letterSpacing: '0.02em' }}>Get in Touch</h2>
+        <p style={{ marginBottom: '1.5rem', fontSize: '1.125rem', color: '#e5e5e5' }}>No previews. No deletes. More rolls coming soon — tap in below.</p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
           {/* Gmail Icon */}
           <a href="mailto:your@email.com" style={{ 
@@ -18,15 +18,16 @@ export default function Contact() {
             color: 'white',
             textDecoration: 'none',
             transition: 'all 0.3s ease',
-            boxShadow: '0 2px 8px rgba(234, 67, 53, 0.3)'
+            boxShadow: '0 0 14px rgba(234, 67, 53, 0.35)',
+            border: '2px solid #111111'
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'scale(1.1)';
-            e.currentTarget.style.boxShadow = '0 4px 16px rgba(234, 67, 53, 0.5)';
+            e.currentTarget.style.boxShadow = '0 0 22px rgba(234, 67, 53, 0.55)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.boxShadow = '0 2px 8px rgba(234, 67, 53, 0.3)';
+            e.currentTarget.style.boxShadow = '0 0 14px rgba(234, 67, 53, 0.35)';
           }}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -46,15 +47,16 @@ export default function Contact() {
             color: 'white',
             textDecoration: 'none',
             transition: 'all 0.3s ease',
-            boxShadow: '0 2px 8px rgba(220, 39, 67, 0.3)'
+            boxShadow: '0 0 14px rgba(220, 39, 67, 0.35)',
+            border: '2px solid #111111'
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'scale(1.1)';
-            e.currentTarget.style.boxShadow = '0 4px 16px rgba(220, 39, 67, 0.5)';
+            e.currentTarget.style.boxShadow = '0 0 22px rgba(220, 39, 67, 0.55)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.boxShadow = '0 2px 8px rgba(220, 39, 67, 0.3)';
+            e.currentTarget.style.boxShadow = '0 0 14px rgba(220, 39, 67, 0.35)';
           }}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -74,19 +76,20 @@ export default function Contact() {
             color: 'white',
             textDecoration: 'none',
             transition: 'all 0.3s ease',
-            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.3)'
+            boxShadow: '0 0 14px rgba(0, 0, 0, 0.35)',
+            border: '2px solid #111111'
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'scale(1.1)';
-            e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.5)';
+            e.currentTarget.style.boxShadow = '0 0 22px rgba(0, 0, 0, 0.55)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.3)';
+            e.currentTarget.style.boxShadow = '0 0 14px rgba(0, 0, 0, 0.35)';
           }}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05 0-12.07z"/>
             </svg>
           </a>
         </div>

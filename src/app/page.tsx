@@ -1,5 +1,5 @@
 import Hero from "../components/Hero";
-import Gallery from "../components/Gallery";
+import Places from "../components/Places";
 import About from "../components/About";
 import Contact from "../components/Contact";
 
@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <Gallery />
+      <Places />
       <About />
       <Contact />
     </main>
