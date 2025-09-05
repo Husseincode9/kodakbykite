@@ -1,6 +1,7 @@
 "use client";
 
 export default function MerchPage() {
+
   return (
     <main style={{ padding: "2rem 1rem", backgroundColor: "#000", color: "#fff", minHeight: "100vh" }}>
       <div style={{ maxWidth: "1600px", margin: "0 auto" }}>
@@ -304,7 +305,7 @@ export default function MerchPage() {
           </div>
         </div>
 
-        {/* Call to action */}
+        {/* Instagram Promotion */}
         <div style={{
           padding: '2rem',
           background: 'linear-gradient(135deg, #111111, #0a0a0a)',
@@ -325,32 +326,57 @@ export default function MerchPage() {
             color: '#c7c7c7',
             marginBottom: '1.5rem'
           }}>
-            Be the first to know when our merch collection drops! Each design will feature your favorite travel moments.
+            Follow us on Instagram to be the first to know when our merch collection drops! Each design will feature your favorite travel moments.
           </p>
-          <button style={{
-            background: 'linear-gradient(135deg, #FFD700, #FFA500)',
-            color: '#000',
-            border: 'none',
-            borderRadius: '25px',
-            padding: '0.75rem 1.5rem',
-            fontSize: '1rem',
-            fontWeight: '600',
-            cursor: 'pointer',
-            transition: 'all 0.3s ease',
-            textTransform: 'uppercase',
-            letterSpacing: '0.02em'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'scale(1.05)';
-            e.currentTarget.style.boxShadow = '0 4px 15px rgba(255, 215, 0, 0.4)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'scale(1)';
-            e.currentTarget.style.boxShadow = 'none';
-          }}
+          
+          <a 
+            href="https://instagram.com/kodakbykite" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-block',
+              background: 'linear-gradient(135deg, #E4405F, #C13584, #833AB4)',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '25px',
+              padding: '0.75rem 1.5rem',
+              fontSize: '1rem',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              textTransform: 'uppercase',
+              letterSpacing: '0.02em',
+              textDecoration: 'none',
+              marginBottom: '1rem'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'scale(1.05)';
+              e.currentTarget.style.boxShadow = '0 4px 15px rgba(228, 64, 95, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'scale(1)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
           >
-            Notify Me
-          </button>
+            📸 Follow @kodakbykite
+          </a>
+          
+          <div style={{
+            marginTop: '1rem',
+            padding: '1rem',
+            backgroundColor: 'rgba(255, 215, 0, 0.1)',
+            borderRadius: '8px',
+            border: '1px solid #FFD700'
+          }}>
+            <p style={{
+              color: '#FFD700',
+              fontSize: '0.9rem',
+              margin: 0,
+              fontWeight: '500'
+            }}>
+              💫 Get exclusive behind-the-scenes content, early access to new designs, and special discounts for followers!
+            </p>
+          </div>
         </div>
       </div>
     </main>

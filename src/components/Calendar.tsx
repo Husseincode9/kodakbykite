@@ -11,9 +11,6 @@ interface Event {
 export default function Calendar() {
   const [currentDate, setCurrentDate] = useState<Date | null>(null);
   const [events, setEvents] = useState<Event[]>([]);
-  const [showAddEvent, setShowAddEvent] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<string>("");
-  const [newEventTitle, setNewEventTitle] = useState("");
   const [isClient, setIsClient] = useState(false);
 
   // Initialize after hydration
@@ -22,8 +19,8 @@ export default function Calendar() {
     // Set to actual current date
     setCurrentDate(new Date());
     
-    // Italy trip is September 25-29, 2025
-    const italyTripEvents: Event[] = [
+    // Set static events (only you can modify these through code)
+    const staticEvents: Event[] = [
       {
         id: 'italy-rome-1',
         title: '🇮🇹 Rome',
@@ -55,8 +52,8 @@ export default function Calendar() {
         color: '#45B7D1'
       }
     ];
-
-    setEvents(italyTripEvents);
+    
+    setEvents(staticEvents);
   }, []);
 
   // Get current month and year
@@ -91,30 +88,6 @@ export default function Calendar() {
     setCurrentDate(new Date());
   };
 
-  // Event functions
-  const addEvent = () => {
-    if (newEventTitle.trim() && selectedDate) {
-      const newEvent: Event = {
-        id: Date.now().toString(),
-        title: newEventTitle.trim(),
-        date: selectedDate,
-        color: `hsl(${Math.random() * 360}, 70%, 60%)`
-      };
-      setEvents([...events, newEvent]);
-      setNewEventTitle("");
-      setSelectedDate("");
-      setShowAddEvent(false);
-    }
-  };
-
-  const deleteEvent = (eventId: string) => {
-    setEvents(events.filter(event => event.id !== eventId));
-  };
-
-  const openAddEvent = (date: string) => {
-    setSelectedDate(date);
-    setShowAddEvent(true);
-  };
 
   // Get events for a specific date
   const getEventsForDate = (date: string) => {
@@ -356,7 +329,6 @@ export default function Calendar() {
                 transition: 'all 0.3s ease',
                 position: 'relative'
               }}
-              onClick={() => dayData && openAddEvent(dayData.dateString)}
               onMouseEnter={(e) => {
                 if (dayData) {
                   e.currentTarget.style.borderColor = '#FFD700';
@@ -395,11 +367,7 @@ export default function Calendar() {
                           cursor: 'pointer',
                           position: 'relative'
                         }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          deleteEvent(event.id);
-                        }}
-                        title="Click to delete"
+                        title="Event"
                         >
                           {event.title}
                         </div>
@@ -412,8 +380,8 @@ export default function Calendar() {
           </div>
         </div>
 
-        {/* Add Event Modal */}
-        {showAddEvent && (
+        {/* Add Event Modal - Removed */}
+        {false && (
           <div style={{
             position: 'fixed',
             top: 0,
@@ -499,7 +467,106 @@ export default function Calendar() {
             </div>
           </div>
         )}
+
+        {/* Event Context Menu - Removed */}
+        {false && (
+          <div
+            style={{
+              position: 'fixed',
+              top: menuPosition.y,
+              left: menuPosition.x,
+              backgroundColor: '#1a1a1a',
+              border: '2px solid #FFD700',
+              borderRadius: '0.5rem',
+              padding: '0.5rem',
+              zIndex: 1000,
+              boxShadow: '0 4px 20px rgba(0,0,0,0.5)',
+              minWidth: '150px'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div style={{
+              color: '#FFD700',
+              fontSize: '0.9rem',
+              fontWeight: 'bold',
+              marginBottom: '0.5rem',
+              paddingBottom: '0.25rem',
+              borderBottom: '1px solid #FFD700'
+            }}>
+              {selectedEvent.title}
+            </div>
+            
+            <button
+              onClick={() => handleViewDetails(selectedEvent)}
+              style={{
+                width: '100%',
+                padding: '0.5rem',
+                marginBottom: '0.25rem',
+                backgroundColor: '#2a2a2a',
+                color: '#fff',
+                border: '1px solid #444',
+                borderRadius: '0.25rem',
+                cursor: 'pointer',
+                fontSize: '0.8rem',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#3a3a3a';
+                e.currentTarget.style.borderColor = '#FFD700';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#2a2a2a';
+                e.currentTarget.style.borderColor = '#444';
+              }}
+            >
+              📋 View Details
+            </button>
+            
+            <button
+              onClick={() => handleDeleteEvent(selectedEvent.id)}
+              style={{
+                width: '100%',
+                padding: '0.5rem',
+                backgroundColor: '#DC143C',
+                color: '#fff',
+                border: '1px solid #DC143C',
+                borderRadius: '0.25rem',
+                cursor: 'pointer',
+                fontSize: '0.8rem',
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#B22222';
+                e.currentTarget.style.borderColor = '#B22222';
+                e.currentTarget.style.borderColor = '#B22222';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#DC143C';
+                e.currentTarget.style.borderColor = '#DC143C';
+              }}
+            >
+              🗑️ Delete Event
+            </button>
+          </div>
+        )}
+
+        {/* Backdrop to close menu - Removed */}
+        {false && (
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              zIndex: 999,
+              backgroundColor: 'transparent'
+            }}
+            onClick={closeEventMenu}
+          />
+        )}
       </div>
     </section>
   );
 }
+

@@ -46,7 +46,7 @@ export async function GET() {
             allImages.push({
               src: `/places/${slug}/${file}`,
               alt: `${title} - ${file}`,
-              title: `${title} - ${file.replace(/\.[^/.]+$/, "")}`,
+              title: title,
               location: location,
               slug: slug
             });

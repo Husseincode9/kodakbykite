@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, use } from "react";
-import ImageModal from "./ImageModal";
 
 export default function PlaceGallery({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
