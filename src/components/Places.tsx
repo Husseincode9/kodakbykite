@@ -60,6 +60,22 @@ export default function Places() {
               color: activeCountry === key ? '#FFD700' : '#FFFFFF',
               boxShadow: activeCountry === key ? '0 0 16px rgba(255, 215, 0, 0.2)' : 'none'
             }}
+            onMouseEnter={(e) => {
+              if (activeCountry !== key) {
+                e.currentTarget.style.borderColor = '#FFD700';
+                e.currentTarget.style.color = '#FFD700';
+                e.currentTarget.style.backgroundColor = '#111111';
+                e.currentTarget.style.boxShadow = '0 0 16px rgba(255, 215, 0, 0.2)';
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (activeCountry !== key) {
+                e.currentTarget.style.borderColor = '#333333';
+                e.currentTarget.style.color = '#FFFFFF';
+                e.currentTarget.style.backgroundColor = '#0a0a0a';
+                e.currentTarget.style.boxShadow = 'none';
+              }
+            }}
           >
             <span style={{ marginRight: '0.5rem' }}>{country.flag}</span>
             {country.name}
@@ -68,7 +84,7 @@ export default function Places() {
       </div>
 
       {/* Gallery Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', maxWidth: '1400px', margin: '0 auto' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2.5rem', maxWidth: '1600px', margin: '0 auto' }}>
         {countries[activeCountry as keyof typeof countries].images.map((image, idx) => (
           <a key={idx} href={`/places/${image.slug}`} style={{ textDecoration: 'none' }}>
             <div style={{ 
@@ -98,7 +114,7 @@ export default function Places() {
                 alt={image.alt}
                 style={{ 
                   width: '100%', 
-                  height: '280px', 
+                  height: '350px', 
                   objectFit: 'cover',
                   borderRadius: '0.75rem',
                   marginBottom: '1rem',

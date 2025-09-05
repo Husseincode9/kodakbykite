@@ -28,8 +28,8 @@ export default function Navigation() {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        maxWidth: '1200px',
-        margin: '0 auto'
+        width: '100%',
+        padding: '0 2rem'
       }}>
         {/* Logo */}
         <a href="/" style={{
@@ -87,7 +87,7 @@ export default function Navigation() {
         className="nav-link">
           CALENDAR
         </a>
-        <a href="#postcards" style={{
+        <a href="/postcards" style={{
           color: '#FFFFFF',
           textDecoration: 'none',
           fontSize: '1.1rem',
@@ -101,7 +101,7 @@ export default function Navigation() {
         className="nav-link">
           POST CARDS
         </a>
-        <a href="#merch" style={{
+        <a href="/merch" style={{
           color: '#FFFFFF',
           textDecoration: 'none',
           fontSize: '1.1rem',

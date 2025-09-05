@@ -1,19 +1,27 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import ImageModal from "./ImageModal";
 
-export default function PlaceGallery({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default function PlaceGallery({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = use(params);
   const [files, setFiles] = useState<string[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Load files on client side
   useEffect(() => {
+    setIsLoading(true);
     fetch(`/api/places/${slug}`)
       .then(res => res.json())
-      .then(data => setFiles(data.files || []))
-      .catch(() => setFiles([]));
+      .then(data => {
+        setFiles(data.files || []);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setFiles([]);
+        setIsLoading(false);
+      });
   }, [slug]);
 
   // Handle keyboard navigation
@@ -95,7 +103,32 @@ export default function PlaceGallery({ params }: { params: { slug: string } }) {
         }}>
           {title}
         </h1>
-        {files.length === 0 ? (
+        {isLoading ? (
+          <div style={{ 
+            display: "flex", 
+            justifyContent: "center", 
+            alignItems: "center", 
+            height: "400px",
+            flexDirection: "column"
+          }}>
+            <div style={{
+              width: "50px",
+              height: "50px",
+              border: "4px solid #333333",
+              borderTop: "4px solid #FFD700",
+              borderRadius: "50%",
+              animation: "spin 1s linear infinite",
+              marginBottom: "1rem"
+            }}></div>
+            <p style={{ color: "#c7c7c7", fontSize: "1.2rem" }}>Loading images...</p>
+            <style jsx>{`
+              @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+              }
+            `}</style>
+          </div>
+        ) : files.length === 0 ? (
           <p style={{ color: "#c7c7c7", textAlign: "center", fontSize: "1.2rem" }}>
             No images found. Add photos to <code style={{ color: "#FFD700" }}>public/places/{slug}</code> (jpg, png, webp, gif) and refresh.
           </p>
