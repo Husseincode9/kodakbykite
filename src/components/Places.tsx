@@ -39,7 +39,23 @@ export default function Places() {
   } as const;
 
   return (
-    <section style={{ padding: '4rem 1.5rem', backgroundColor: '#000000', color: '#FFFFFF' }}>
+    <section style={{ padding: '4rem 0.5rem', backgroundColor: '#000000', color: '#FFFFFF' }}>
+      <style jsx>{`
+        .gallery {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          gap: 2.5rem;
+          max-width: 1600px;
+          margin: 0 auto;
+          width: 100%;
+        }
+        @media (max-width: 480px) {
+          .gallery {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 1.25rem;
+          }
+        }
+      `}</style>
       <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center', letterSpacing: '0.02em' }}>Places I've Been</h2>
       
       {/* Country Tabs */}
@@ -84,7 +100,7 @@ export default function Places() {
       </div>
 
       {/* Gallery Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2.5rem', maxWidth: '1600px', margin: '0 auto' }}>
+      <div className="gallery">
         {countries[activeCountry as keyof typeof countries].images.map((image, idx) => (
           <a key={idx} href={`/places/${image.slug}`} style={{ textDecoration: 'none' }}>
             <div style={{ 

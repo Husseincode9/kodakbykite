@@ -1,6 +1,6 @@
 export default function About() {
     return (
-      <section style={{ padding: '4rem 1.5rem', backgroundColor: '#000000', textAlign: 'center', color: '#FFFFFF', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: '4rem 0.5rem', backgroundColor: '#000000', textAlign: 'center', color: '#FFFFFF', position: 'relative', overflow: 'hidden' }}>
         {/* Bold, solid Kodak-style blotches (non-blurry) */}
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1 }}>
           {/* Large left sweep - adjusted for mobile */}
@@ -42,7 +42,7 @@ export default function About() {
         </div>
 
         <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold', marginBottom: '1.5rem', letterSpacing: '0.02em', position: 'relative', zIndex: 10 }}>About Me</h2>
-        <div style={{ maxWidth: '48rem', margin: '0 auto', position: 'relative', zIndex: 10 }}>
+        <div style={{ maxWidth: '100%', margin: '0 auto', position: 'relative', zIndex: 10 }}>
           <div style={{ 
             width: '10rem', 
             height: '10rem', 

@@ -2,7 +2,7 @@
 
 export default function Contact() {
     return (
-      <section style={{ padding: '4rem 1.5rem', textAlign: 'center', backgroundColor: '#000000', color: '#FFFFFF' }}>
+      <section style={{ padding: '4rem 0.5rem', textAlign: 'center', backgroundColor: '#000000', color: '#FFFFFF' }}>
         <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold', marginBottom: '1rem', letterSpacing: '0.02em' }}>Get in Touch</h2>
         <p style={{ marginBottom: '1.5rem', fontSize: '1.125rem', color: '#e5e5e5' }}>No previews. No deletes. More rolls coming soon — tap in below.</p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
