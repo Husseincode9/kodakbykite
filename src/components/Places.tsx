@@ -1,9 +1,11 @@
 "use client";
-import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { memo } from "react";
 
-export default function Places() {
-  const [activeCountry, setActiveCountry] = useState("switzerland");
-
+const Places = memo(function Places() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  
   const countries = {
     switzerland: {
       name: "Switzerland",
@@ -35,11 +37,40 @@ export default function Places() {
       images: [
         { src: "/nairobi.jpg", alt: "Nairobi - Green City", title: "Nairobi", slug: "nairobi" },
       ]
+    },
+    italy: {
+      name: "Italy",
+      flag: "🇮🇹",
+      images: [
+        { src: "/rome.jpg", alt: "Rome - Eternal City", title: "Rome", slug: "rome" },
+        { src: "/genoa.jpg", alt: "Genoa - Maritime Republic", title: "Genoa", slug: "genoa" },
+        { src: "/milan.jpg", alt: "Milan - Fashion Capital", title: "Milan", slug: "milan" },
+        { src: "/pisa.jpg", alt: "Pisa - Leaning Tower", title: "Pisa", slug: "pisa" },
+      ]
     }
   } as const;
 
+  // Get country from URL params directly to prevent flash
+  const countryFromUrl = searchParams.get('country');
+  const activeCountry = (countryFromUrl && countries[countryFromUrl as keyof typeof countries]) 
+    ? countryFromUrl 
+    : "switzerland";
+
+  // Update URL when country changes
+  const handleCountryChange = (country: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('country', country);
+    router.replace(`/?${params.toString()}`, { scroll: false });
+  };
+
   return (
-    <section style={{ padding: '4rem 0.5rem', backgroundColor: '#000000', color: '#FFFFFF' }}>
+    <section style={{ 
+      padding: '4rem 0.5rem', 
+      backgroundColor: '#000000', 
+      color: '#FFFFFF',
+      minHeight: '100vh',
+      position: 'relative'
+    }}>
       <style jsx>{`
         .gallery {
           display: grid;
@@ -48,12 +79,20 @@ export default function Places() {
           max-width: 1600px;
           margin: 0 auto;
           width: 100%;
+          opacity: 1;
+          transition: opacity 0.1s ease-in-out;
+          will-change: auto;
+          contain: layout style;
         }
         @media (max-width: 480px) {
           .gallery {
             grid-template-columns: repeat(1, minmax(0, 1fr));
             gap: 1.25rem;
           }
+        }
+        * {
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
         }
       `}</style>
       <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center', letterSpacing: '0.02em' }}>Places I've Been</h2>
@@ -63,7 +102,7 @@ export default function Places() {
         {Object.entries(countries).map(([key, country]) => (
           <button
             key={key}
-            onClick={() => setActiveCountry(key)}
+            onClick={() => handleCountryChange(key)}
             style={{
               padding: '0.75rem 1.5rem',
               border: '2px solid ' + (activeCountry === key ? '#FFD700' : '#333333'),
@@ -102,7 +141,7 @@ export default function Places() {
       {/* Gallery Grid */}
       <div className="gallery">
         {countries[activeCountry as keyof typeof countries].images.map((image, idx) => (
-          <a key={idx} href={`/places/${image.slug}`} style={{ textDecoration: 'none' }}>
+          <a key={idx} href={`/places/${image.slug}?from=${activeCountry}`} style={{ textDecoration: 'none' }}>
             <div style={{ 
               backgroundColor: '#0a0a0a', 
               borderRadius: '1.25rem', 
@@ -173,5 +212,7 @@ export default function Places() {
       </div>
     </section>
   );
-}
+});
+
+export default Places;
   

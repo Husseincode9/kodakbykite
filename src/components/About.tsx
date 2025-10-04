@@ -1,6 +1,13 @@
 export default function About() {
     return (
-      <section style={{ padding: '4rem 0.5rem', backgroundColor: '#000000', textAlign: 'center', color: '#FFFFFF', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ 
+        padding: '2rem 1rem', 
+        backgroundColor: '#000000', 
+        textAlign: 'center', 
+        color: '#FFFFFF', 
+        position: 'relative', 
+        overflow: 'hidden' 
+      }}>
         {/* Bold, solid Kodak-style blotches (non-blurry) */}
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1 }}>
           {/* Large left sweep - adjusted for mobile */}
@@ -41,11 +48,18 @@ export default function About() {
           }} />
         </div>
 
-        <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold', marginBottom: '1.5rem', letterSpacing: '0.02em', position: 'relative', zIndex: 10 }}>About Me</h2>
+        <h2 style={{ 
+          fontSize: 'clamp(1.5rem, 4vw, 1.875rem)', 
+          fontWeight: 'bold', 
+          marginBottom: '1.5rem', 
+          letterSpacing: '0.02em', 
+          position: 'relative', 
+          zIndex: 10 
+        }}>About Me</h2>
         <div style={{ maxWidth: '100%', margin: '0 auto', position: 'relative', zIndex: 10 }}>
           <div style={{ 
-            width: '10rem', 
-            height: '10rem', 
+            width: 'clamp(8rem, 20vw, 10rem)', 
+            height: 'clamp(8rem, 20vw, 10rem)', 
             margin: '0 auto 1.5rem', 
             borderRadius: '50%', 
             border: '4px solid #FFD700', 
@@ -65,7 +79,15 @@ export default function About() {
               }}
             />
           </div>
-          <div style={{ textAlign: 'center', lineHeight: '2', fontSize: '1.125rem', position: 'relative', zIndex: 10 }}>
+          <div style={{ 
+            textAlign: 'center', 
+            lineHeight: '1.6', 
+            fontSize: 'clamp(1rem, 2.5vw, 1.125rem)', 
+            position: 'relative', 
+            zIndex: 10,
+            maxWidth: '90%',
+            margin: '0 auto'
+          }}>
             <p style={{ marginBottom: '1rem' }}>
               Hi. I'm Hussein. Welcome to <strong>Kodak By Kite</strong>.
             </p>

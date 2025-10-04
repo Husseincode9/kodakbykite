@@ -7,6 +7,14 @@ export default function PlaceGallery({ params }: { params: Promise<{ slug: strin
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [fromCountry, setFromCountry] = useState<string | null>(null);
+
+  // Get the 'from' parameter from URL
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const from = urlParams.get('from');
+    setFromCountry(from);
+  }, []);
 
   // Load files on client side
   useEffect(() => {
@@ -89,12 +97,17 @@ export default function PlaceGallery({ params }: { params: Promise<{ slug: strin
   }));
 
   return (
-    <main style={{ padding: "2rem 1rem", backgroundColor: "#000", color: "#fff", minHeight: "100vh" }}>
+    <main style={{ 
+      padding: "1rem 0.5rem", 
+      backgroundColor: "#000", 
+      color: "#fff", 
+      minHeight: "100vh" 
+    }}>
       <div style={{ maxWidth: "1400px", margin: "0 auto" }}>
         <h1 style={{ 
-          fontSize: "3rem", 
+          fontSize: "clamp(2rem, 6vw, 3rem)", 
           fontWeight: 900, 
-          margin: "1rem 0 2rem", 
+          margin: "1rem 0 1.5rem", 
           letterSpacing: "0.02em",
           color: "#DC143C",
           textAlign: "center",
@@ -102,6 +115,40 @@ export default function PlaceGallery({ params }: { params: Promise<{ slug: strin
         }}>
           {title}
         </h1>
+        
+        {/* Back Button */}
+        <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+          <a 
+            href={fromCountry ? `/?country=${fromCountry}` : '/'}
+            style={{
+              display: "inline-block",
+              padding: "0.5rem 1rem",
+              backgroundColor: "#FFD700",
+              color: "#000",
+              textDecoration: "none",
+              borderRadius: "2rem",
+              fontSize: "clamp(0.9rem, 2.5vw, 1rem)",
+              fontWeight: 600,
+              border: "2px solid #FFD700",
+              transition: "all 0.3s ease",
+              boxShadow: "0 4px 15px rgba(255, 215, 0, 0.3)"
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "#000";
+              e.currentTarget.style.color = "#FFD700";
+              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.boxShadow = "0 6px 20px rgba(255, 215, 0, 0.4)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "#FFD700";
+              e.currentTarget.style.color = "#000";
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 4px 15px rgba(255, 215, 0, 0.3)";
+            }}
+          >
+            ← Back to {fromCountry ? fromCountry.charAt(0).toUpperCase() + fromCountry.slice(1) : 'Places'}
+          </a>
+        </div>
         {isLoading ? (
           <div style={{ 
             display: "flex", 
@@ -119,7 +166,7 @@ export default function PlaceGallery({ params }: { params: Promise<{ slug: strin
               animation: "spin 1s linear infinite",
               marginBottom: "1rem"
             }}></div>
-            <p style={{ color: "#c7c7c7", fontSize: "1.2rem" }}>Loading images...</p>
+            <p style={{ color: "#c7c7c7", fontSize: "clamp(1rem, 3vw, 1.2rem)" }}>Loading images...</p>
             <style jsx>{`
               @keyframes spin {
                 0% { transform: rotate(0deg); }
@@ -128,14 +175,19 @@ export default function PlaceGallery({ params }: { params: Promise<{ slug: strin
             `}</style>
           </div>
         ) : files.length === 0 ? (
-          <p style={{ color: "#c7c7c7", textAlign: "center", fontSize: "1.2rem" }}>
+          <p style={{ 
+            color: "#c7c7c7", 
+            textAlign: "center", 
+            fontSize: "clamp(1rem, 3vw, 1.2rem)",
+            padding: "0 1rem"
+          }}>
             No images found. Add photos to <code style={{ color: "#FFD700" }}>public/places/{slug}</code> (jpg, png, webp, gif) and refresh.
           </p>
         ) : (
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "1.5rem",
+            gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            gap: "1rem",
           }}>
             {files.map((file, index) => (
               <div 
@@ -144,7 +196,7 @@ export default function PlaceGallery({ params }: { params: Promise<{ slug: strin
                   background: "#0a0a0a", 
                   border: "2px solid #1f1f1f", 
                   borderRadius: "15px", 
-                  padding: "12px",
+                  padding: "8px",
                   cursor: "pointer",
                   transition: "all 0.3s ease",
                   overflow: "hidden"
@@ -166,7 +218,7 @@ export default function PlaceGallery({ params }: { params: Promise<{ slug: strin
                   alt={`${title} - ${file}`}
                   style={{ 
                     width: "100%", 
-                    height: "300px", 
+                    height: "clamp(200px, 40vw, 300px)", 
                     objectFit: "cover", 
                     borderRadius: "8px",
                     transition: "transform 0.3s ease"

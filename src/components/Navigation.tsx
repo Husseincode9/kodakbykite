@@ -64,7 +64,8 @@ export default function Navigation() {
               textTransform: 'uppercase',
               lineHeight: '0.9',
               WebkitTextStroke: '1px rgba(0,0,0,0.3)',
-              filter: 'drop-shadow(0 0 10px rgba(220, 20, 60, 0.3))'
+              filter: 'drop-shadow(0 0 10px rgba(220, 20, 60, 0.3))',
+              fontFamily: '"Arial Black", "Helvetica Black", "Impact", sans-serif'
             }}>
               KODAK
             </div>
@@ -75,7 +76,8 @@ export default function Navigation() {
               textShadow: '1px 1px 2px rgba(0,0,0,0.7)',
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
-              marginTop: '-2px'
+              marginTop: '-2px',
+              fontFamily: '"Arial Black", "Helvetica Black", sans-serif'
             }}>
               BY KITE
             </div>
@@ -95,43 +97,28 @@ export default function Navigation() {
               borderRadius: '0.5rem',
               transition: 'all 0.3s ease',
               border: '2px solid transparent',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              fontFamily: '"Arial Black", "Helvetica Black", sans-serif',
+              letterSpacing: '0.05em'
             }}
             className="nav-link">
               CALENDAR
             </a>
-            <a 
-              href="#" 
-              onClick={(e) => e.preventDefault()}
-              style={{
-                color: '#666666',
-                textDecoration: 'none',
-                fontSize: '1.1rem',
-                fontWeight: '600',
-                padding: '0.5rem 1rem',
-                borderRadius: '0.5rem',
-                border: '2px solid #333333',
-                cursor: 'not-allowed',
-                position: 'relative'
-              }}
-              title="Under Maintenance - Coming Soon!"
-            >
+            <a href="/postcards" style={{
+              color: '#FFFFFF',
+              textDecoration: 'none',
+              fontSize: '1.1rem',
+              fontWeight: '600',
+              padding: '0.5rem 1rem',
+              borderRadius: '0.5rem',
+              transition: 'all 0.3s ease',
+              border: '2px solid transparent',
+              cursor: 'pointer',
+              fontFamily: '"Arial Black", "Helvetica Black", sans-serif',
+              letterSpacing: '0.05em'
+            }}
+            className="nav-link">
               POST CARDS
-              <span style={{
-                position: 'absolute',
-                top: '-8px',
-                right: '-8px',
-                background: '#FFD700',
-                color: '#000',
-                fontSize: '0.7rem',
-                fontWeight: '700',
-                padding: '0.2rem 0.4rem',
-                borderRadius: '10px',
-                textTransform: 'uppercase',
-                letterSpacing: '0.05em'
-              }}>
-                🔧
-              </span>
             </a>
             <a 
               href="#" 
@@ -145,7 +132,9 @@ export default function Navigation() {
                 borderRadius: '0.5rem',
                 border: '2px solid #333333',
                 cursor: 'not-allowed',
-                position: 'relative'
+                position: 'relative',
+                fontFamily: '"Arial Black", "Helvetica Black", sans-serif',
+                letterSpacing: '0.05em'
               }}
               title="Under Maintenance - Coming Soon!"
             >
@@ -211,11 +200,34 @@ export default function Navigation() {
                 borderRadius: '0.5rem',
                 transition: 'all 0.2s ease',
                 border: '2px solid transparent',
-                marginBottom: '0.25rem'
+                marginBottom: '0.25rem',
+                fontFamily: '"Arial Black", "Helvetica Black", sans-serif',
+                letterSpacing: '0.05em'
               }}
               className="nav-link"
             >
               CALENDAR
+            </a>
+            <a
+              href="/postcards"
+              onClick={() => setIsMenuOpen(false)}
+              style={{
+                display: 'block',
+                color: '#FFFFFF',
+                textDecoration: 'none',
+                fontSize: '1rem',
+                fontWeight: 600,
+                padding: '0.75rem 0.5rem',
+                borderRadius: '0.5rem',
+                transition: 'all 0.2s ease',
+                border: '2px solid transparent',
+                marginBottom: '0.25rem',
+                fontFamily: '"Arial Black", "Helvetica Black", sans-serif',
+                letterSpacing: '0.05em'
+              }}
+              className="nav-link"
+            >
+              POST CARDS
             </a>
             <a
               href="#"
@@ -231,26 +243,8 @@ export default function Navigation() {
                 border: '2px solid #333333',
                 cursor: 'not-allowed',
                 position: 'relative',
-                marginBottom: '0.25rem'
-              }}
-              title="Under Maintenance - Coming Soon!"
-            >
-              POST CARDS 🔧
-            </a>
-            <a
-              href="#"
-              onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); }}
-              style={{
-                display: 'block',
-                color: '#666666',
-                textDecoration: 'none',
-                fontSize: '1rem',
-                fontWeight: 600,
-                padding: '0.75rem 0.5rem',
-                borderRadius: '0.5rem',
-                border: '2px solid #333333',
-                cursor: 'not-allowed',
-                position: 'relative'
+                fontFamily: '"Arial Black", "Helvetica Black", sans-serif',
+                letterSpacing: '0.05em'
               }}
               title="Under Maintenance - Coming Soon!"
             >

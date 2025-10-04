@@ -26,6 +26,25 @@ body {
   overflow-x: hidden;
 }
 
+/* Prevent flashing and layout shifts */
+* {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Smooth transitions */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth loading without hiding content */
+body {
+  opacity: 1;
+  transition: opacity 0.1s ease-in-out;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

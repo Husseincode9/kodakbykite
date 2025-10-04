@@ -37,6 +37,7 @@ export default function RootLayout({
         <div style={{ paddingTop: '80px' }}>
           {children}
         </div>
+        
       </body>
     </html>
   );

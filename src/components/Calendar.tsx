@@ -150,7 +150,14 @@ export default function Calendar() {
   }
 
   return (
-    <section style={{ padding: '4rem 1.5rem', backgroundColor: '#000000', color: '#FFFFFF', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ 
+      padding: '2rem 1rem', 
+      backgroundColor: '#000000', 
+      color: '#FFFFFF', 
+      position: 'relative', 
+      overflow: 'hidden',
+      minHeight: '100vh'
+    }}>
       {/* Background decorative elements */}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1 }}>
         <div style={{ 
@@ -179,9 +186,9 @@ export default function Calendar() {
 
       <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
         <h2 style={{ 
-          fontSize: '2.5rem', 
+          fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', 
           fontWeight: 'bold', 
-          marginBottom: '2rem', 
+          marginBottom: '1.5rem', 
           textAlign: 'center', 
           letterSpacing: '0.02em',
           color: '#DC143C',
@@ -195,22 +202,23 @@ export default function Calendar() {
           display: 'flex', 
           justifyContent: 'space-between', 
           alignItems: 'center', 
-          marginBottom: '2rem',
+          marginBottom: '1.5rem',
           flexWrap: 'wrap',
-          gap: '1rem'
+          gap: '0.5rem'
         }}>
           <button
             onClick={goToPreviousMonth}
             style={{
-              padding: '0.75rem 1.5rem',
+              padding: '0.5rem 1rem',
               backgroundColor: '#111111',
               border: '2px solid #FFD700',
               borderRadius: '0.5rem',
               color: '#FFD700',
               cursor: 'pointer',
-              fontSize: '1rem',
+              fontSize: 'clamp(0.8rem, 2.5vw, 1rem)',
               fontWeight: '600',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s ease',
+              minWidth: '80px'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.backgroundColor = 'rgba(255, 215, 0, 0.1)';
@@ -219,12 +227,12 @@ export default function Calendar() {
               e.currentTarget.style.backgroundColor = '#111111';
             }}
           >
-            ← Previous
+            ← Prev
           </button>
 
-          <div style={{ textAlign: 'center' }}>
+          <div style={{ textAlign: 'center', flex: '1', minWidth: '200px' }}>
             <h3 style={{ 
-              fontSize: '2rem', 
+              fontSize: 'clamp(1.2rem, 3.5vw, 2rem)', 
               fontWeight: 'bold', 
               margin: '0',
               color: '#FFFFFF'
@@ -233,19 +241,20 @@ export default function Calendar() {
             </h3>
           </div>
 
-          <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <div style={{ display: 'flex', gap: '0.25rem', flexWrap: 'wrap' }}>
             <button
               onClick={goToToday}
               style={{
-                padding: '0.75rem 1.5rem',
+                padding: '0.5rem 1rem',
                 backgroundColor: '#111111',
                 border: '2px solid #333333',
                 borderRadius: '0.5rem',
                 color: '#FFFFFF',
                 cursor: 'pointer',
-                fontSize: '1rem',
+                fontSize: 'clamp(0.8rem, 2.5vw, 1rem)',
                 fontWeight: '600',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
+                minWidth: '60px'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = '#FFD700';
@@ -261,15 +270,16 @@ export default function Calendar() {
             <button
               onClick={goToNextMonth}
               style={{
-                padding: '0.75rem 1.5rem',
+                padding: '0.5rem 1rem',
                 backgroundColor: '#111111',
                 border: '2px solid #FFD700',
                 borderRadius: '0.5rem',
                 color: '#FFD700',
                 cursor: 'pointer',
-                fontSize: '1rem',
+                fontSize: 'clamp(0.8rem, 2.5vw, 1rem)',
                 fontWeight: '600',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
+                minWidth: '80px'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'rgba(255, 215, 0, 0.1)';
@@ -316,12 +326,12 @@ export default function Calendar() {
           <div style={{ 
             display: 'grid', 
             gridTemplateColumns: 'repeat(7, 1fr)', 
-            gap: '0.5rem' 
+            gap: '0.25rem' 
           }}>
             {calendarDays.map((dayData, index) => (
               <div key={index} style={{
-                minHeight: '120px',
-                padding: '0.75rem',
+                minHeight: 'clamp(80px, 15vw, 120px)',
+                padding: '0.5rem',
                 border: '1px solid #333333',
                 borderRadius: '0.5rem',
                 backgroundColor: dayData ? '#111111' : 'transparent',
@@ -345,10 +355,10 @@ export default function Calendar() {
                 {dayData && (
                   <>
                     <div style={{
-                      fontSize: '1.2rem',
+                      fontSize: 'clamp(0.9rem, 2.5vw, 1.2rem)',
                       fontWeight: 'bold',
                       color: dayData.isToday ? '#FFD700' : '#FFFFFF',
-                      marginBottom: '0.5rem',
+                      marginBottom: '0.25rem',
                       textAlign: 'center'
                     }}>
                       {dayData.day}
@@ -360,9 +370,9 @@ export default function Calendar() {
                         <div key={event.id} style={{
                           backgroundColor: event.color,
                           color: '#000000',
-                          padding: '0.25rem 0.5rem',
+                          padding: '0.2rem 0.4rem',
                           borderRadius: '0.25rem',
-                          fontSize: '0.8rem',
+                          fontSize: 'clamp(0.7rem, 2vw, 0.8rem)',
                           fontWeight: '600',
                           cursor: 'pointer',
                           position: 'relative'

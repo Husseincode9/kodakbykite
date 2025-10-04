@@ -2,17 +2,38 @@
 
 export default function Contact() {
     return (
-      <section style={{ padding: '4rem 0.5rem', textAlign: 'center', backgroundColor: '#000000', color: '#FFFFFF' }}>
-        <h2 style={{ fontSize: '1.875rem', fontWeight: 'bold', marginBottom: '1rem', letterSpacing: '0.02em' }}>Get in Touch</h2>
-        <p style={{ marginBottom: '1.5rem', fontSize: '1.125rem', color: '#e5e5e5' }}>No previews. No deletes. More rolls coming soon — tap in below.</p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem' }}>
+      <section style={{ 
+        padding: '2rem 1rem', 
+        textAlign: 'center', 
+        backgroundColor: '#000000', 
+        color: '#FFFFFF' 
+      }}>
+        <h2 style={{ 
+          fontSize: 'clamp(1.5rem, 4vw, 1.875rem)', 
+          fontWeight: 'bold', 
+          marginBottom: '1rem', 
+          letterSpacing: '0.02em' 
+        }}>Get in Touch</h2>
+        <p style={{ 
+          marginBottom: '1.5rem', 
+          fontSize: 'clamp(1rem, 2.5vw, 1.125rem)', 
+          color: '#e5e5e5',
+          maxWidth: '90%',
+          margin: '0 auto 1.5rem'
+        }}>No previews. No deletes. More rolls coming soon — tap in below.</p>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          gap: 'clamp(1rem, 4vw, 2rem)',
+          flexWrap: 'wrap'
+        }}>
           {/* Gmail Icon */}
           <a href="mailto:your@email.com" style={{ 
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'center',
-            width: '3rem',
-            height: '3rem',
+            width: 'clamp(2.5rem, 6vw, 3rem)',
+            height: 'clamp(2.5rem, 6vw, 3rem)',
             borderRadius: '50%',
             backgroundColor: '#EA4335',
             color: 'white',
@@ -40,8 +61,8 @@ export default function Contact() {
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'center',
-            width: '3rem',
-            height: '3rem',
+            width: 'clamp(2.5rem, 6vw, 3rem)',
+            height: 'clamp(2.5rem, 6vw, 3rem)',
             borderRadius: '50%',
             background: 'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
             color: 'white',
@@ -69,8 +90,8 @@ export default function Contact() {
             display: 'flex', 
             alignItems: 'center', 
             justifyContent: 'center',
-            width: '3rem',
-            height: '3rem',
+            width: 'clamp(2.5rem, 6vw, 3rem)',
+            height: 'clamp(2.5rem, 6vw, 3rem)',
             borderRadius: '50%',
             backgroundColor: '#000000',
             color: 'white',

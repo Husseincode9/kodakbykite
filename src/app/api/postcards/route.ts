@@ -35,7 +35,11 @@ export async function GET() {
             'paris': 'France',
             'annecy': 'France',
             'marrakech': 'Morocco',
-            'nairobi': 'Kenya'
+            'nairobi': 'Kenya',
+            'rome': 'Italy',
+            'genoa': 'Italy',
+            'milan': 'Italy',
+            'pisa': 'Italy'
           };
 
           const location = locationMap[slug] || slug;

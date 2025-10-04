@@ -1,9 +1,17 @@
 "use client";
-import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ 
+      height: '100vh', 
+      display: 'flex', 
+      alignItems: 'center', 
+      justifyContent: 'center', 
+      textAlign: 'center', 
+      position: 'relative', 
+      overflow: 'hidden',
+      padding: '2rem 1rem'
+    }}>
       {/* Main black background */}
       <div style={{ position: 'absolute', inset: 0, backgroundColor: '#000000' }}></div>
       
@@ -49,7 +57,7 @@ export default function Hero() {
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 10 }}>
         <h1 style={{ 
-          fontSize: '5rem', 
+          fontSize: 'clamp(3rem, 8vw, 5rem)', 
           fontWeight: '900', 
           color: '#DC143C', 
           textShadow: '3px 3px 6px rgba(0,0,0,0.8)',
@@ -64,7 +72,7 @@ export default function Hero() {
           KODAK
         </h1>
         <h2 style={{ 
-          fontSize: '2rem', 
+          fontSize: 'clamp(1.2rem, 4vw, 2rem)', 
           fontWeight: '600', 
           color: '#FFFFFF', 
           textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
@@ -76,20 +84,22 @@ export default function Hero() {
           BY KITE
         </h2>
         <p style={{ 
-          fontSize: '1.5rem', 
+          fontSize: 'clamp(1rem, 3vw, 1.5rem)', 
           color: '#FFFFFF',
           fontWeight: '500',
           textShadow: '1px 1px 2px rgba(0,0,0,0.7)',
           fontFamily: '"Kodak", "Kodak Condensed", "Kodak Extended", "Arial Black", "Helvetica Black", sans-serif',
-          letterSpacing: '0.02em'
+          letterSpacing: '0.02em',
+          maxWidth: '90%',
+          margin: '0 auto'
         }}>
           No preview. No delete. Just in the moment.
         </p>
         
         {/* Camera lens effect */}
         <div style={{
-          width: '80px',
-          height: '80px',
+          width: 'clamp(60px, 12vw, 80px)',
+          height: 'clamp(60px, 12vw, 80px)',
           borderRadius: '50%',
           backgroundColor: '#000000',
           margin: '2rem auto 0',
@@ -98,8 +108,8 @@ export default function Hero() {
           position: 'relative'
         }}>
           <div style={{
-            width: '60px',
-            height: '60px',
+            width: 'clamp(45px, 9vw, 60px)',
+            height: 'clamp(45px, 9vw, 60px)',
             borderRadius: '50%',
             backgroundColor: '#333333',
             position: 'absolute',
