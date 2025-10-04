@@ -95,6 +95,7 @@ export default function MerchPage() {
             50% { transform: scale(1.1); }
           }
         `}</style>
+      </div>
     </main>
   );
 }
