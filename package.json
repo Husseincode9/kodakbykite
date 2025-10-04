@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "node scripts/generate-places-data.js && node scripts/generate-places-files.js",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "biome check",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "generate-data": "node scripts/generate-places-data.js && node scripts/generate-places-files.js"
   },
   "dependencies": {
     "framer-motion": "^12.23.12",
