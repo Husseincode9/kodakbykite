@@ -1,10 +1,12 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
-import { memo } from "react";
+import { memo, useState, useEffect } from "react";
 
 const Places = memo(function Places() {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const [activeCountry, setActiveCountry] = useState("switzerland");
+  const [isHydrated, setIsHydrated] = useState(false);
   
   const countries = {
     switzerland: {
@@ -50,14 +52,18 @@ const Places = memo(function Places() {
     }
   } as const;
 
-  // Get country from URL params directly to prevent flash
-  const countryFromUrl = searchParams.get('country');
-  const activeCountry = (countryFromUrl && countries[countryFromUrl as keyof typeof countries]) 
-    ? countryFromUrl 
-    : "switzerland";
+  // Handle hydration and URL params
+  useEffect(() => {
+    setIsHydrated(true);
+    const countryFromUrl = searchParams.get('country');
+    if (countryFromUrl && countries[countryFromUrl as keyof typeof countries]) {
+      setActiveCountry(countryFromUrl);
+    }
+  }, [searchParams]);
 
   // Update URL when country changes
   const handleCountryChange = (country: string) => {
+    setActiveCountry(country);
     const params = new URLSearchParams(searchParams.toString());
     params.set('country', country);
     router.replace(`/?${params.toString()}`, { scroll: false });
