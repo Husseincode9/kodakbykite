@@ -70,18 +70,17 @@ const Places = memo(function Places() {
   };
 
   return (
-    <section id="places" style={{ 
-      padding: '4rem 0.5rem', 
-      backgroundColor: '#000000', 
-      color: '#FFFFFF',
-      minHeight: '100vh',
-      position: 'relative'
-    }}>
+     <section id="places" style={{ 
+       padding: '2rem 0.5rem', 
+       backgroundColor: '#000000', 
+       color: '#FFFFFF',
+       position: 'relative'
+     }}>
       <style jsx>{`
         .gallery {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-          gap: 2.5rem;
+          gap: 1.5rem;
           max-width: 1600px;
           margin: 0 auto;
           width: 100%;
@@ -188,12 +187,11 @@ const Places = memo(function Places() {
                 style={{ 
                   width: '100%', 
                   height: '350px', 
-                  objectFit: 'contain',
+                  objectFit: 'cover',
                   borderRadius: '0.75rem',
                   marginBottom: '1rem',
                   border: '3px solid #111111',
-                  transition: 'transform 0.3s ease',
-                  backgroundColor: '#0a0a0a'
+                  transition: 'transform 0.3s ease'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'scale(1.05)';

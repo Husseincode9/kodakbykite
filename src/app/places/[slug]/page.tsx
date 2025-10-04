@@ -31,7 +31,7 @@ export default function PlaceGallery({ params }: { params: Promise<{ slug: strin
       });
   }, [slug]);
 
-  // Handle keyboard navigation
+  // Handle keyboard navigation and prevent body scroll
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (!isModalOpen) return;
@@ -59,12 +59,18 @@ export default function PlaceGallery({ params }: { params: Promise<{ slug: strin
 
     if (isModalOpen) {
       document.addEventListener('keydown', handleKeyDown);
+      // Prevent body scroll when modal is open
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
     }
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      // Restore body scroll when modal closes
       document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.width = 'unset';
     };
   }, [isModalOpen, currentImageIndex, files.length]);
 
@@ -230,7 +236,7 @@ export default function PlaceGallery({ params }: { params: Promise<{ slug: strin
         )}
       </div>
 
-      {/* Single Modal for all images */}
+      {/* Modal */}
       {isModalOpen && files.length > 0 && (
         <div 
           style={{
@@ -239,150 +245,122 @@ export default function PlaceGallery({ params }: { params: Promise<{ slug: strin
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.95)",
+            backgroundColor: "rgba(0, 0, 0, 0.9)",
+            zIndex: 1000,
             display: "flex",
+            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            zIndex: 1000,
-            padding: "2rem"
+            padding: "2rem",
+            overflow: "auto",
+            boxSizing: "border-box"
           }}
           onClick={() => setIsModalOpen(false)}
         >
-          <div style={{ 
-            position: "relative", 
-            width: "100vw", 
-            height: "100vh", 
-            display: "flex", 
-            alignItems: "center", 
-            justifyContent: "center",
-            padding: "4rem",
-            boxSizing: "border-box"
+          {/* Close button - top right */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsModalOpen(false);
+            }}
+            style={{
+              position: "absolute",
+              top: "2rem",
+              right: "2rem",
+              background: "#FFD700",
+              color: "#000",
+              border: "none",
+              borderRadius: "50%",
+              width: "40px",
+              height: "40px",
+              cursor: "pointer",
+              fontSize: "1.2rem",
+              fontWeight: "bold"
+            }}
+          >
+            ×
+          </button>
+
+          {/* Navigation arrows - outside image */}
+          {files.length > 1 && (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNavigate('prev');
+                }}
+                style={{
+                  position: "absolute",
+                  left: "2rem",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "#FFD700",
+                  color: "#000",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: "50px",
+                  height: "50px",
+                  cursor: "pointer",
+                  fontSize: "1.2rem",
+                  fontWeight: "bold"
+                }}
+              >
+                ←
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNavigate('next');
+                }}
+                style={{
+                  position: "absolute",
+                  right: "2rem",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "#FFD700",
+                  color: "#000",
+                  border: "none",
+                  borderRadius: "50%",
+                  width: "50px",
+                  height: "50px",
+                  cursor: "pointer",
+                  fontSize: "1.2rem",
+                  fontWeight: "bold"
+                }}
+              >
+                →
+              </button>
+            </>
+          )}
+
+          {/* Image - centered */}
+          <img
+            src={`/places/${slug}/${files[currentImageIndex]}`}
+            alt={`${title} - ${files[currentImageIndex]}`}
+            style={{
+              maxWidth: "70vw",
+              maxHeight: "70vh",
+              objectFit: "contain",
+              borderRadius: "10px"
+            }}
+          />
+
+          {/* Instructions - below image */}
+          <div style={{
+            marginTop: "2rem",
+            color: "#FFFFFF",
+            fontSize: "0.9rem",
+            textAlign: "center",
+            background: "rgba(0, 0, 0, 0.7)",
+            padding: "0.5rem 1rem",
+            borderRadius: "20px"
           }}>
-            <img
-              src={`/places/${slug}/${files[currentImageIndex]}`}
-              alt={`${title} - ${files[currentImageIndex]}`}
-              style={{
-                maxWidth: "calc(100vw - 8rem)",
-                maxHeight: "calc(100vh - 8rem)",
-                width: "auto",
-                height: "auto",
-                objectFit: "contain",
-                borderRadius: "10px",
-                boxShadow: "0 0 50px rgba(255, 215, 0, 0.3)",
-                display: "block"
-              }}
-            />
-            
-            {/* Close button */}
-            <button
-              onClick={() => setIsModalOpen(false)}
-              style={{
-                position: "absolute",
-                top: "-50px",
-                right: "0",
-                background: "rgba(0, 0, 0, 0.8)",
-                color: "#FFD700",
-                border: "2px solid #FFD700",
-                borderRadius: "50%",
-                width: "40px",
-                height: "40px",
-                fontSize: "1.5rem",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-            >
-              ×
-            </button>
-
-            {/* Navigation arrows */}
             {files.length > 1 && (
-              <>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleNavigate('prev');
-                  }}
-                  style={{
-                    position: "absolute",
-                    left: "1rem",
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    background: "rgba(0, 0, 0, 0.8)",
-                    color: "#FFD700",
-                    border: "2px solid #FFD700",
-                    borderRadius: "50%",
-                    width: "50px",
-                    height: "50px",
-                    fontSize: "1.5rem",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}
-                >
-                  ←
-                </button>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleNavigate('next');
-                  }}
-                  style={{
-                    position: "absolute",
-                    right: "1rem",
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    background: "rgba(0, 0, 0, 0.8)",
-                    color: "#FFD700",
-                    border: "2px solid #FFD700",
-                    borderRadius: "50%",
-                    width: "50px",
-                    height: "50px",
-                    fontSize: "1.5rem",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}
-                >
-                  →
-                </button>
-              </>
-            )}
-
-            {/* Image counter */}
-            {files.length > 1 && (
-              <div style={{
-                position: "absolute",
-                bottom: "1rem",
-                left: "50%",
-                transform: "translateX(-50%)",
-                background: "rgba(0, 0, 0, 0.8)",
-                color: "#FFD700",
-                padding: "0.5rem 1rem",
-                borderRadius: "20px",
-                fontSize: "0.9rem",
-                fontWeight: "600"
-              }}>
+              <div style={{ marginBottom: "0.5rem" }}>
                 {currentImageIndex + 1} / {files.length}
               </div>
             )}
-
-            {/* Instructions */}
-            <div style={{
-              position: "absolute",
-              bottom: "3.5rem",
-              left: "50%",
-              transform: "translateX(-50%)",
-              color: "#FFFFFF",
-              fontSize: "0.8rem",
-              textAlign: "center",
-              opacity: 0.7
-            }}>
-              Use ← → arrow keys to navigate • ESC to close
-            </div>
+            Use ← → arrow keys to navigate • ESC to close
           </div>
         </div>
       )}
