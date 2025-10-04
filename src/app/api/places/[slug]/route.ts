@@ -8,7 +8,7 @@ export async function GET(
   const { slug } = await params;
   
   // Get files from pre-generated static data
-  const files = placesFiles[slug] || [];
+  const files = (placesFiles as Record<string, string[]>)[slug] || [];
 
   return NextResponse.json({ files });
 }
