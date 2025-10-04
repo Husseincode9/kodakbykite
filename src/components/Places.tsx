@@ -70,7 +70,7 @@ const Places = memo(function Places() {
   };
 
   return (
-    <section style={{ 
+    <section id="places" style={{ 
       padding: '4rem 0.5rem', 
       backgroundColor: '#000000', 
       color: '#FFFFFF',

@@ -104,21 +104,40 @@ export default function Navigation() {
             className="nav-link">
               CALENDAR
             </a>
-            <a href="/postcards" style={{
-              color: '#FFFFFF',
-              textDecoration: 'none',
-              fontSize: '1.1rem',
-              fontWeight: '600',
-              padding: '0.5rem 1rem',
-              borderRadius: '0.5rem',
-              transition: 'all 0.3s ease',
-              border: '2px solid transparent',
-              cursor: 'pointer',
-              fontFamily: '"Arial Black", "Helvetica Black", sans-serif',
-              letterSpacing: '0.05em'
-            }}
-            className="nav-link">
+            <a 
+              href="#" 
+              onClick={(e) => e.preventDefault()}
+              style={{
+                color: '#666666',
+                textDecoration: 'none',
+                fontSize: '1.1rem',
+                fontWeight: '600',
+                padding: '0.5rem 1rem',
+                borderRadius: '0.5rem',
+                border: '2px solid #333333',
+                cursor: 'not-allowed',
+                position: 'relative',
+                fontFamily: '"Arial Black", "Helvetica Black", sans-serif',
+                letterSpacing: '0.05em'
+              }}
+              title="Under Maintenance - Coming Soon!"
+            >
               POST CARDS
+              <span style={{
+                position: 'absolute',
+                top: '-8px',
+                right: '-8px',
+                background: '#FFD700',
+                color: '#000',
+                fontSize: '0.7rem',
+                fontWeight: '700',
+                padding: '0.2rem 0.4rem',
+                borderRadius: '10px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+              }}>
+                🔧
+              </span>
             </a>
             <a 
               href="#" 
@@ -209,25 +228,25 @@ export default function Navigation() {
               CALENDAR
             </a>
             <a
-              href="/postcards"
-              onClick={() => setIsMenuOpen(false)}
+              href="#"
+              onClick={(e) => { e.preventDefault(); setIsMenuOpen(false); }}
               style={{
                 display: 'block',
-                color: '#FFFFFF',
+                color: '#666666',
                 textDecoration: 'none',
                 fontSize: '1rem',
                 fontWeight: 600,
                 padding: '0.75rem 0.5rem',
                 borderRadius: '0.5rem',
-                transition: 'all 0.2s ease',
-                border: '2px solid transparent',
-                marginBottom: '0.25rem',
+                border: '2px solid #333333',
+                cursor: 'not-allowed',
+                position: 'relative',
                 fontFamily: '"Arial Black", "Helvetica Black", sans-serif',
                 letterSpacing: '0.05em'
               }}
-              className="nav-link"
+              title="Under Maintenance - Coming Soon!"
             >
-              POST CARDS
+              POST CARDS 🔧
             </a>
             <a
               href="#"

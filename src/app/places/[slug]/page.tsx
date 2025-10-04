@@ -119,7 +119,7 @@ export default function PlaceGallery({ params }: { params: Promise<{ slug: strin
         {/* Back Button */}
         <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
           <a 
-            href={fromCountry ? `/?country=${fromCountry}` : '/'}
+            href={fromCountry ? `/?country=${fromCountry}#places` : '/?country=switzerland#places'}
             style={{
               display: "inline-block",
               padding: "0.5rem 1rem",

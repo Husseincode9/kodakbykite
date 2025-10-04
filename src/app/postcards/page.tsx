@@ -52,7 +52,117 @@ export default function PostcardsPage() {
   };
 
   return (
-    <main style={{ padding: "2rem 1rem", backgroundColor: "#000", color: "#fff", minHeight: "100vh" }}>
+    <main style={{ padding: "2rem 1rem", backgroundColor: "#000", color: "#fff", minHeight: "100vh", position: "relative" }}>
+
+      {/* Lock Overlay */}
+      <div style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: "rgba(0, 0, 0, 0.95)",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: 1000,
+        backdropFilter: "blur(10px)"
+      }}>
+        <div style={{
+          textAlign: "center",
+          padding: "3rem",
+          background: "linear-gradient(135deg, #111111, #0a0a0a)",
+          borderRadius: "20px",
+          border: "3px solid #FFD700",
+          maxWidth: "500px",
+          margin: "0 2rem"
+        }}>
+          <div style={{
+            fontSize: "4rem",
+            marginBottom: "1rem"
+          }}>
+            🔒
+          </div>
+          <h2 style={{
+            fontSize: "2.5rem",
+            fontWeight: "900",
+            color: "#FFD700",
+            marginBottom: "1rem",
+            letterSpacing: "0.02em"
+          }}>
+            Coming Soon
+          </h2>
+          <p style={{
+            fontSize: "1.2rem",
+            color: "#c7c7c7",
+            marginBottom: "2rem",
+            lineHeight: "1.6"
+          }}>
+            The postcard collection is being prepared for launch. Check back soon for amazing travel memories!
+          </p>
+          <div style={{
+            display: "flex",
+            gap: "1rem",
+            justifyContent: "center",
+            flexWrap: "wrap"
+          }}>
+            <a 
+              href="/"
+              style={{
+                background: "linear-gradient(135deg, #FFD700, #FFA500)",
+                color: "#000",
+                textDecoration: "none",
+                padding: "0.75rem 1.5rem",
+                borderRadius: "25px",
+                fontSize: "1rem",
+                fontWeight: "600",
+                transition: "all 0.3s ease",
+                textTransform: "uppercase",
+                letterSpacing: "0.02em"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.05)";
+                e.currentTarget.style.boxShadow = "0 4px 15px rgba(255, 215, 0, 0.4)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
+              🏠 Back to Home
+            </a>
+            <a 
+              href="/places"
+              style={{
+                background: "transparent",
+                color: "#FFD700",
+                textDecoration: "none",
+                padding: "0.75rem 1.5rem",
+                borderRadius: "25px",
+                fontSize: "1rem",
+                fontWeight: "600",
+                transition: "all 0.3s ease",
+                textTransform: "uppercase",
+                letterSpacing: "0.02em",
+                border: "2px solid #FFD700"
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#FFD700";
+                e.currentTarget.style.color = "#000";
+                e.currentTarget.style.transform = "scale(1.05)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "transparent";
+                e.currentTarget.style.color = "#FFD700";
+                e.currentTarget.style.transform = "scale(1)";
+              }}
+            >
+              📍 View Places
+            </a>
+          </div>
+        </div>
+      </div>
 
       <div style={{ maxWidth: "1600px", margin: "0 auto" }}>
         <h1 style={{ 
