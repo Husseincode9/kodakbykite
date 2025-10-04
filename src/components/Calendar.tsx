@@ -181,6 +181,10 @@ export default function Calendar() {
             font-size: 0.6rem !important;
             padding: 0.1rem 0.2rem !important;
           }
+          .day-header {
+            font-size: 0.7rem !important;
+            padding: 0.5rem 0.25rem !important;
+          }
         }
         @media (max-width: 480px) {
           .calendar-grid {
@@ -189,6 +193,10 @@ export default function Calendar() {
           .calendar-day {
             min-height: 50px !important;
             padding: 0.2rem !important;
+          }
+          .day-header {
+            font-size: 0.6rem !important;
+            padding: 0.4rem 0.2rem !important;
           }
         }
       `}</style>
@@ -343,7 +351,7 @@ export default function Calendar() {
             marginBottom: '1rem' 
           }}>
             {dayNames.map(day => (
-              <div key={day} style={{
+              <div key={day} className="day-header" style={{
                 padding: '1rem',
                 textAlign: 'center',
                 fontWeight: 'bold',
