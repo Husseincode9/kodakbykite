@@ -158,6 +158,40 @@ export default function Calendar() {
       overflow: 'hidden',
       minHeight: '100vh'
     }}>
+      <style jsx>{`
+        .calendar-grid {
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          gap: 0.25rem;
+        }
+        @media (max-width: 768px) {
+          .calendar-grid {
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            gap: 0.125rem;
+          }
+          .calendar-day {
+            min-height: 60px !important;
+            padding: 0.25rem !important;
+            font-size: 0.8rem !important;
+          }
+          .calendar-day-number {
+            font-size: 0.7rem !important;
+          }
+          .calendar-event {
+            font-size: 0.6rem !important;
+            padding: 0.1rem 0.2rem !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .calendar-grid {
+            gap: 0.1rem;
+          }
+          .calendar-day {
+            min-height: 50px !important;
+            padding: 0.2rem !important;
+          }
+        }
+      `}</style>
       {/* Background decorative elements */}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1 }}>
         <div style={{ 
@@ -323,13 +357,9 @@ export default function Calendar() {
           </div>
 
           {/* Calendar Days */}
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(7, 1fr)', 
-            gap: '0.25rem' 
-          }}>
+          <div className="calendar-grid">
             {calendarDays.map((dayData, index) => (
-              <div key={index} style={{
+              <div key={index} className="calendar-day" style={{
                 minHeight: 'clamp(80px, 15vw, 120px)',
                 padding: '0.5rem',
                 border: '1px solid #333333',
@@ -354,7 +384,7 @@ export default function Calendar() {
               >
                 {dayData && (
                   <>
-                    <div style={{
+                    <div className="calendar-day-number" style={{
                       fontSize: 'clamp(0.9rem, 2.5vw, 1.2rem)',
                       fontWeight: 'bold',
                       color: dayData.isToday ? '#FFD700' : '#FFFFFF',
@@ -367,7 +397,7 @@ export default function Calendar() {
                     {/* Events for this day */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
                       {dayData.events.map(event => (
-                        <div key={event.id} style={{
+                        <div key={event.id} className="calendar-event" style={{
                           backgroundColor: event.color,
                           color: '#000000',
                           padding: '0.2rem 0.4rem',

@@ -157,17 +157,29 @@ const Places = memo(function Places() {
               transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
               cursor: 'pointer',
               position: 'relative',
-              overflow: 'hidden'
+              overflow: 'hidden',
+              maxWidth: '500px',
+              margin: '0 auto'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)';
               e.currentTarget.style.boxShadow = '0 12px 30px rgba(255, 215, 0, 0.2)';
-              e.currentTarget.style.borderColor = '#FFD700';
+              // Only highlight the image border, not the container
+              const img = e.currentTarget.querySelector('img');
+              if (img) {
+                img.style.borderColor = '#FFD700';
+                img.style.boxShadow = '0 0 15px rgba(255, 215, 0, 0.3)';
+              }
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0) scale(1)';
               e.currentTarget.style.boxShadow = '0 6px 15px rgba(0, 0, 0, 0.4)';
-              e.currentTarget.style.borderColor = '#1f1f1f';
+              // Reset image border
+              const img = e.currentTarget.querySelector('img');
+              if (img) {
+                img.style.borderColor = '#111111';
+                img.style.boxShadow = 'none';
+              }
             }}
             >
               <img
@@ -176,11 +188,12 @@ const Places = memo(function Places() {
                 style={{ 
                   width: '100%', 
                   height: '350px', 
-                  objectFit: 'cover',
+                  objectFit: 'contain',
                   borderRadius: '0.75rem',
                   marginBottom: '1rem',
                   border: '3px solid #111111',
-                  transition: 'transform 0.3s ease'
+                  transition: 'transform 0.3s ease',
+                  backgroundColor: '#0a0a0a'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'scale(1.05)';

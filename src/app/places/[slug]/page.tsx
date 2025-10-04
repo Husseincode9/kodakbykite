@@ -255,14 +255,17 @@ export default function PlaceGallery({ params }: { params: Promise<{ slug: strin
             display: "flex", 
             alignItems: "center", 
             justifyContent: "center",
-            padding: "4rem 6rem 8rem 6rem"
+            padding: "4rem",
+            boxSizing: "border-box"
           }}>
             <img
               src={`/places/${slug}/${files[currentImageIndex]}`}
               alt={`${title} - ${files[currentImageIndex]}`}
               style={{
-                maxWidth: "calc(100vw - 12rem)",
-                maxHeight: "calc(100vh - 12rem)",
+                maxWidth: "calc(100vw - 8rem)",
+                maxHeight: "calc(100vh - 8rem)",
+                width: "auto",
+                height: "auto",
                 objectFit: "contain",
                 borderRadius: "10px",
                 boxShadow: "0 0 50px rgba(255, 215, 0, 0.3)",
