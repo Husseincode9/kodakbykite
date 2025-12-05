@@ -53,55 +53,55 @@ export default function Calendar() {
       },
       {
         id: 'egypt-cairo-hurghada-1',
-        title: '🇪🇬 Cairo/Hurghada',
+        title: '🇪🇬 Egypt',
         date: '2025-12-16',
         color: '#FFA500'
       },
       {
         id: 'egypt-cairo-hurghada-2',
-        title: '🇪🇬 Cairo/Hurghada',
+        title: '🇪🇬 Egypt',
         date: '2025-12-17',
         color: '#FFA500'
       },
       {
         id: 'egypt-cairo-hurghada-3',
-        title: '🇪🇬 Cairo/Hurghada',
+        title: '🇪🇬 Egypt',
         date: '2025-12-18',
         color: '#FFA500'
       },
       {
         id: 'egypt-cairo-hurghada-4',
-        title: '🇪🇬 Cairo/Hurghada',
+        title: '🇪🇬 Egypt',
         date: '2025-12-19',
         color: '#FFA500'
       },
       {
         id: 'egypt-cairo-hurghada-5',
-        title: '🇪🇬 Cairo/Hurghada',
+        title: '🇪🇬 Egypt',
         date: '2025-12-20',
         color: '#FFA500'
       },
       {
         id: 'egypt-cairo-hurghada-6',
-        title: '🇪🇬 Cairo/Hurghada',
+        title: '🇪🇬 Egypt',
         date: '2025-12-21',
         color: '#FFA500'
       },
       {
         id: 'egypt-cairo-hurghada-7',
-        title: '🇪🇬 Cairo/Hurghada',
+        title: '🇪🇬 Egypt',
         date: '2025-12-22',
         color: '#FFA500'
       },
       {
         id: 'egypt-cairo-hurghada-8',
-        title: '🇪🇬 Cairo/Hurghada',
+        title: '🇪🇬 Egypt',
         date: '2025-12-23',
         color: '#FFA500'
       },
       {
         id: 'egypt-cairo-hurghada-9',
-        title: '🇪🇬 Cairo/Hurghada',
+        title: '🇪🇬 Egypt',
         date: '2025-12-24',
         color: '#FFA500'
       }
@@ -234,6 +234,11 @@ export default function Calendar() {
           .calendar-event {
             font-size: 0.6rem !important;
             padding: 0.1rem 0.2rem !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            min-width: 0 !important;
+            width: 100% !important;
           }
           .day-header {
             font-size: 0.7rem !important;
@@ -457,7 +462,7 @@ export default function Calendar() {
                     </div>
                     
                     {/* Events for this day */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem', width: '100%', minWidth: 0 }}>
                       {dayData.events.map(event => (
                         <div key={event.id} className="calendar-event" style={{
                           backgroundColor: event.color,
@@ -467,9 +472,14 @@ export default function Calendar() {
                           fontSize: 'clamp(0.7rem, 2vw, 0.8rem)',
                           fontWeight: '600',
                           cursor: 'pointer',
-                          position: 'relative'
+                          position: 'relative',
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          width: '100%',
+                          minWidth: 0
                         }}
-                        title="Event"
+                        title={event.title}
                         >
                           {event.title}
                         </div>
