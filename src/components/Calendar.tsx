@@ -50,6 +50,60 @@ export default function Calendar() {
         title: '🇮🇹 Milan',
         date: '2025-09-29',
         color: '#45B7D1'
+      },
+      {
+        id: 'egypt-cairo-hurghada-1',
+        title: '🇪🇬 Cairo/Hurghada',
+        date: '2025-12-16',
+        color: '#FFA500'
+      },
+      {
+        id: 'egypt-cairo-hurghada-2',
+        title: '🇪🇬 Cairo/Hurghada',
+        date: '2025-12-17',
+        color: '#FFA500'
+      },
+      {
+        id: 'egypt-cairo-hurghada-3',
+        title: '🇪🇬 Cairo/Hurghada',
+        date: '2025-12-18',
+        color: '#FFA500'
+      },
+      {
+        id: 'egypt-cairo-hurghada-4',
+        title: '🇪🇬 Cairo/Hurghada',
+        date: '2025-12-19',
+        color: '#FFA500'
+      },
+      {
+        id: 'egypt-cairo-hurghada-5',
+        title: '🇪🇬 Cairo/Hurghada',
+        date: '2025-12-20',
+        color: '#FFA500'
+      },
+      {
+        id: 'egypt-cairo-hurghada-6',
+        title: '🇪🇬 Cairo/Hurghada',
+        date: '2025-12-21',
+        color: '#FFA500'
+      },
+      {
+        id: 'egypt-cairo-hurghada-7',
+        title: '🇪🇬 Cairo/Hurghada',
+        date: '2025-12-22',
+        color: '#FFA500'
+      },
+      {
+        id: 'egypt-cairo-hurghada-8',
+        title: '🇪🇬 Cairo/Hurghada',
+        date: '2025-12-23',
+        color: '#FFA500'
+      },
+      {
+        id: 'egypt-cairo-hurghada-9',
+        title: '🇪🇬 Cairo/Hurghada',
+        date: '2025-12-24',
+        color: '#FFA500'
       }
     ];
     
