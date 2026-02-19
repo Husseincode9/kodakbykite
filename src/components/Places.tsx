@@ -49,6 +49,14 @@ const Places = memo(function Places() {
         { src: "/milan.jpg", alt: "Milan - Fashion Capital", title: "Milan", slug: "milan" },
         { src: "/pisa.jpg", alt: "Pisa - Leaning Tower", title: "Pisa", slug: "pisa" },
       ]
+    },
+    egypt: {
+      name: "Egypt",
+      flag: "🇪🇬",
+      images: [
+        { src: "/cairo.jpg", alt: "Cairo - Capital of Egypt", title: "Cairo", slug: "cario" },
+        { src: "/hurghada.jpg", alt: "Hurghada - Red Sea Resort", title: "Hurghada", slug: "hurghada" },
+      ]
     }
   } as const;
 

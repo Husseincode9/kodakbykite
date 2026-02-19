@@ -33,11 +33,18 @@ function generatePlacesData() {
             'rome': 'Italy',
             'genoa': 'Italy',
             'milan': 'Italy',
-            'pisa': 'Italy'
+            'pisa': 'Italy',
+            'cario': 'Egypt',
+            'hurghada': 'Egypt'
+          };
+
+          // Title mapping for special cases
+          const titleMap = {
+            'cario': 'Cairo'
           };
 
           const location = locationMap[slug] || slug;
-          const title = slug.replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase());
+          const title = titleMap[slug] || slug.replace(/-/g, " ").replace(/\b\w/g, (m) => m.toUpperCase());
 
           // Add each image file
           for (const file of imageFiles) {
